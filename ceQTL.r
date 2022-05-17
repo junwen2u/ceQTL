@@ -43,7 +43,6 @@ ceQTL = function(genename, fgeno, fexpr, fgene_loc, ftf_info, extend_dis = 50000
   colnames(gene_list) = c("Enhancer_id","Loc","tss_dis","TFs" )
   gene_list$TFs = as.character(gene_list$TFs)
   
-  extend_dis = 5000
   result = findsnp(genename,gene_list,gene_loc,snp_loc,extend_dis)   # find snp
   
   if(nrow(result) < 1) {
@@ -97,7 +96,7 @@ ceQTL = function(genename, fgeno, fexpr, fgene_loc, ftf_info, extend_dis = 50000
   
   outpath  = './results/'
   
-  filename  =  paste0(outpath,cancername,'_',exprname,'_',snpcode,'_',genename,'_ALL.txt')
+  filename  =  paste0(outpath, genename, '_ALL.txt')
   
   if(nrow(final_all) > 0){
     write.table(final_all,filename,row.names = F,sep = '\t')
